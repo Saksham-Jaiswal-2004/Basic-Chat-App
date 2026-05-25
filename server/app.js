@@ -20,6 +20,9 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
+// Socket Middlewares
+// io.use((socket, next) => {});
+
 io.on("connection", (socket) => {
     console.log("A User Connected; User-ID:", socket.id);
 
@@ -35,6 +38,10 @@ io.on("connection", (socket) => {
         socket.broadcast.emit("receive-message", data.message);
         else
         io.to(data.room).emit("receive-message", data.message);
+    });
+
+    socket.on("join-room", (room) => {
+        socket.join(room);
     });
 
     socket.on("disconnect", () => {
