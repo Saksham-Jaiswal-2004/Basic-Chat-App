@@ -13,7 +13,8 @@ const App = () => {
   const [joinedRoom, setJoinedRoom] = useState('Not joined');
   const [messages, setMessages] = useState([]);
 
-  const socket = useMemo(() => io(import.meta.env.SERVER_URL || 'http://localhost:3000'), []);
+  console.log("URL:", import.meta.env.VITE_SERVER_URL);
+  const socket = useMemo(() => io(import.meta.env.VITE_SERVER_URL), []);
 
   useEffect(() => {
     socket.on('connect', () => {
