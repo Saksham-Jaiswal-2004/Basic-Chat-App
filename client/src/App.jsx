@@ -13,7 +13,7 @@ const App = () => {
   const [joinedRoom, setJoinedRoom] = useState('Not joined');
   const [messages, setMessages] = useState([]);
 
-  const socket = useMemo(() => io(process.env.SERVER_URL || 'http://localhost:3000'), []);
+  const socket = useMemo(() => io(process.env.SERVER_URL), []);
 
   useEffect(() => {
     socket.on('connect', () => {
