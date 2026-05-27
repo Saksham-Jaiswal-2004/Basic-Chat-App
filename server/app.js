@@ -10,7 +10,7 @@ app.use(express.json());
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: process.env.SITE_URL || "http://localhost:5173",
+        origin: import.meta.env.SITE_URL || "http://localhost:5173",
         methods: ["GET", "POST"],
         credentials: true,
     },
